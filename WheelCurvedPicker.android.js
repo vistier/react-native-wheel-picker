@@ -32,7 +32,7 @@ var WheelCurvedPicker = React.createClass ({
 
 	getDefaultProps(): Object {
 		return {
-			itemStyle : {color:"white", fontSize:26},
+			itemStyle : {color:"black", fontSize:26},
 			itemSpace: 20,
 		};
 	},

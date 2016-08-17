@@ -53,7 +53,7 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
         super.drawForeground(canvas);
 
         Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.GRAY);
         canvas.drawLine(rectCurItem.left, rectCurItem.top, rectCurItem.right, rectCurItem.top, paint);
         canvas.drawLine(rectCurItem.left, rectCurItem.bottom, rectCurItem.right, rectCurItem.bottom, paint);
     }

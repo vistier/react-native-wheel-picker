@@ -3,6 +3,7 @@
 import React from 'react';
 import {
 	View,
+	PixelRatio,
 	ColorPropType,
 	requireNativeComponent,
 } from 'react-native';
@@ -31,8 +32,9 @@ var WheelCurvedPicker = React.createClass ({
 	},
 
 	getDefaultProps(): Object {
+		
 		return {
-			itemStyle : {color:"black", fontSize:26},
+			itemStyle : {color:"black", fontSize: 9 * PixelRatio.get()},
 			itemSpace: 20,
 		};
 	},

@@ -53,6 +53,7 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
             }
             picker.setValueData(valueData);
             picker.setData(labelData);
+            picker.invalidate();
         }
     }
 

@@ -2,7 +2,9 @@ package com.zyu;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.Shader;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 
@@ -38,7 +40,7 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
             public void onWheelSelected(int index, String data) {
                 if (mValueData != null && index < mValueData.size()) {
                     mEventDispatcher.dispatchEvent(
-                            new ItemSelectedEvent(getId(), SystemClock.uptimeMillis(), mValueData.get(index)));
+                            new ItemSelectedEvent(getId(), mValueData.get(index)));
                 }
             }
 
@@ -54,6 +56,10 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 
         Paint paint = new Paint();
         paint.setColor(Color.GRAY);
+        int colorFrom = 0x00FFFFFF;//Color.BLACK;
+        int colorTo = Color.WHITE;
+        LinearGradient linearGradientShader = new LinearGradient(rectCurItem.left, rectCurItem.top, rectCurItem.right/2, rectCurItem.top, colorFrom, colorTo, Shader.TileMode.MIRROR);
+        paint.setShader(linearGradientShader);
         canvas.drawLine(rectCurItem.left, rectCurItem.top, rectCurItem.right, rectCurItem.top, paint);
         canvas.drawLine(rectCurItem.left, rectCurItem.bottom, rectCurItem.right, rectCurItem.bottom, paint);
     }
@@ -80,8 +86,8 @@ class ItemSelectedEvent extends Event<ItemSelectedEvent> {
 
     private final int mValue;
 
-    protected ItemSelectedEvent(int viewTag, long timestampMs,  int value) {
-        super(viewTag, timestampMs);
+    protected ItemSelectedEvent(int viewTag,  int value) {
+        super(viewTag);
         mValue = value;
     }
 

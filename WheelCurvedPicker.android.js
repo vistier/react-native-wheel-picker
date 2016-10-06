@@ -72,7 +72,7 @@ var WheelCurvedPicker = React.createClass ({
 				value: selectedItem.theValue,
 				label: selectedItem.label,
 				index: selectedItem.value,
-			}});
+			});
 		}
 	},
 

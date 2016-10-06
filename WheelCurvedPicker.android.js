@@ -36,6 +36,7 @@ var WheelCurvedPicker = React.createClass ({
 		return {
 			itemStyle : {color:"black", fontSize: 9 * PixelRatio.get()},
 			itemSpace: 7 * PixelRatio.get(),
+			selectedIndex: 0,
 		};
 	},
 
@@ -48,10 +49,10 @@ var WheelCurvedPicker = React.createClass ({
 	},
 
 	_stateFromProps: function(props) {
-		var selectedIndex = 0;
+		var selectedIndex = props.selectedIndex;
 		var items = [];
 		React.Children.forEach(props.children, function (child, index) {
-			if (child.props.value === props.selectedValue) {
+			if (props.selectedValue && child.props.value === props.selectedValue) {
 				selectedIndex = index;
 			}
 			items.push({value: index, theValue: child.props.value, label: child.props.label});
@@ -66,8 +67,12 @@ var WheelCurvedPicker = React.createClass ({
 	_onValueChange: function(e: Event) {
 		if (this.props.onValueChange) {
 			var selectedItem = this.state.items[e.nativeEvent.data] ;
-			!selectedItem && (selectedItem = {theValue:0}) ;
-			this.props.onValueChange(selectedItem.theValue);
+			!selectedItem && (selectedItem = {value: 0, theValue:0}) ;
+			this.props.onValueChange({
+				value: selectedItem.theValue,
+				label: selectedItem.label,
+				index: selectedItem.value,
+			}});
 		}
 	},
 

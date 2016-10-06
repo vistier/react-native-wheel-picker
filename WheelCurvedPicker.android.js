@@ -68,11 +68,7 @@ var WheelCurvedPicker = React.createClass ({
 		if (this.props.onValueChange) {
 			var selectedItem = this.state.items[e.nativeEvent.data] ;
 			!selectedItem && (selectedItem = {value: 0, theValue:0}) ;
-			this.props.onValueChange({
-				value: selectedItem.theValue,
-				label: selectedItem.label,
-				index: selectedItem.value,
-			});
+			this.props.onValueChange(selectedItem.theValue);
 		}
 	},
 

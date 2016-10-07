@@ -87,6 +87,20 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         }
     }
 
+    @ReactProp(name="baseColorFrom", customType = "Color")
+    public void setBaseColorFrom(ReactWheelCurvedPicker picker, Integer color) {
+        if (picker != null) {
+            picker.setBaseColorFrom(color);
+        }
+    }
+
+    @ReactProp(name="baseColorTo", customType = "Color")
+    public void setBaseColorTo(ReactWheelCurvedPicker picker, Integer color) {
+        if (picker != null) {
+            picker.setBaseColorTo(color);
+        }
+    }
+
     @Override
     public String getName() {
         return REACT_CLASS;

@@ -27,6 +27,8 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 
     private final EventDispatcher mEventDispatcher;
     private List<Integer> mValueData;
+    private int baseColorFrom = 0x00FFFFFF;
+    private int baseColorTo = Color.BLACK;
 
     public ReactWheelCurvedPicker(ReactContext reactContext) {
         super(reactContext);
@@ -56,8 +58,8 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 
         Paint paint = new Paint();
         paint.setColor(Color.GRAY);
-        int colorFrom = 0x00FFFFFF;//Color.BLACK;
-        int colorTo = Color.WHITE;
+        int colorFrom = baseColorFrom;
+        int colorTo = baseColorTo;
         LinearGradient linearGradientShader = new LinearGradient(rectCurItem.left, rectCurItem.top, rectCurItem.right/2, rectCurItem.top, colorFrom, colorTo, Shader.TileMode.MIRROR);
         paint.setShader(linearGradientShader);
         canvas.drawLine(rectCurItem.left, rectCurItem.top, rectCurItem.right, rectCurItem.top, paint);
@@ -68,7 +70,23 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
     public void setItemIndex(int index) {
         super.setItemIndex(index);
         unitDeltaTotal = 0;
-		mHandler.post(this);
+        mHandler.post(this);
+    }
+
+    public int getBaseColorFrom() {
+        return baseColorFrom;
+    }
+
+    public void setBaseColorFrom(int baseColorFrom) {
+        this.baseColorFrom = baseColorFrom;
+    }
+
+    public int getBaseColorTo() {
+        return baseColorTo;
+    }
+
+    public void setBaseColorTo(int baseColorTo) {
+        this.baseColorTo = baseColorTo;
     }
 
     public void setValueData(List<Integer> data) {

@@ -39,7 +39,7 @@ var WheelCurvedPicker = React.createClass ({
 		
 		return {
 			itemStyle : {color:"black", fontSize: 9 * PixelRatio.get()},
-			itemSpace: 7 * PixelRatio.get(),
+			itemSpace: 20,
 			selectedIndex: 0,
 			baseColorFrom: '#FFFFFF00',
 			baseColorTo: 'black',
